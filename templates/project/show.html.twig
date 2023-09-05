@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Project{% endblock %}
+
+{% block body %}
+    <h1 style="color: white;">Project</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th style="color: white;">Id</th>
+                <td style="color: white;">{{ project.id }}</td>
+            </tr>
+            <tr>
+                <th style="color: white;">Name</th>
+                <td style="color: white;"> {{ project.name }}</td>
+            </tr>
+            <tr>
+                <th style="color: white;">Description</th>
+                <td style="color: white;">{{ project.description }}</td>
+            </tr>
+            <tr>
+                <th style="color: white;">Created_ad</th>
+                <td style="color: white;">{{ project.createdAd ? project.createdAd|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th style="color: white;">Updated_ad</th>
+                <td style="color: white;">{{ project.updatedAd ? project.updatedAd|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th style="color: white;">Bearbeiter</th>
+                <td style="color: white;">{{ project.bearbeiter }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-outline-info float-right" href="{{ path('app_project_index') }}"> 
+        View All Projects
+    </a>
+
+    <a
+    class="btn btn-outline-success"
+    href="{{ path('app_project_edit', {'id': project.id}) }}">
+    Edit
+</a>
+
+    {{ include('project/_delete_form.html.twig') }}
+{% endblock %}

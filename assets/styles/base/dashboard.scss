@@ -1,0 +1,49 @@
+.dashboard-header{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    margin-top: 20px;
+}
+.dash-headertext{
+    text-align: center;
+    text-shadow: 2px 2px 4px #6200ff;
+    color: black;
+}
+.dashboard-container {
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    gap: 20em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.dash-color{
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dash-box{
+    width: 10em;
+    height: 10em;
+    border-radius: 20px;
+    border: 2px #6200ff solid;
+    box-shadow: #6200ff 0px 5px 15px;
+}
+.link-to{
+    color: white;
+    text-decoration: none;
+}
+.link-to:hover{
+    color: black;
+    text-shadow: 2px 2px 4px #6200ff;
+}
+.projecs {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+}

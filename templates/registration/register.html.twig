@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+{% include "./navbar/sidebar.html.twig" %}
+
+    <div>{{  form_errors(registrationForm) }}</div>
+
+    <div class="register-container" >{{ form_start(registrationForm) }}
+                <h1 class="re-tittle">Register</h1>
+
+        <div class="re-email">{{ form_row(registrationForm.email) }}</div>
+         <div class="re-password">{{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}</div>
+        {{ form_row(registrationForm.roles)}}
+        <div class="re-agree">{{ form_row(registrationForm.agreeTerms) }}</div>
+
+        <button type="submit" class="button-92">sign up</button>
+        
+    
+    {{ form_end(registrationForm) }}
+    {# <div class="btn-move">
+        <button  class=" button-92"><a style="color: white;text-decoration: none;font-weight: 400;font-size: 2rem;text-shadow: calc(var(--_i,-1)* 0.08em) -0.01em 0 var(--c), calc(var(--_i,-1)*-0.08em) 0.01em 2px #0004;outline-offset: 0.1em;" href="/">sign in</a></button>
+    </div> #}
+</div>
+    
+{% endblock %}
+
+

@@ -1,0 +1,103 @@
+
+<div class="area"></div><nav class="main-menu">
+    
+    <img class="ny-tech-logo-sidebar" src="{{ asset('build/images/logo/nyTech-weiß.png')}}" alt="Ny Tech">
+    
+    <ul>
+        
+        <li>
+            <a href="/dashboard">
+                <i class="fa fa-home fa-6x"></i>
+                <span class="nav-text">
+                   Dashboard
+                </span>
+            </a>
+          
+        </li>
+        
+        
+            {% if 'ROLE_WORKER' in app.user.roles or 'ROLE_ADMIN' in app.user.roles %}
+            <li class="has-subnav">
+                <a href="/project/">
+                    <i class="fa fa-folder-open-o" aria-hidden="true"></i>
+                    <span class="nav-text">
+                        Manager
+                    </span>
+                </a>
+            </li>
+           
+            {% endif %}
+
+        {% if 'ROLE_ADMIN' in app.user.roles %}
+                <li class="has-subnav">
+                    <a href="/register">
+                        <i class="fa fa-user-plus" aria-hidden="true"></i>
+                        <span class="nav-text">
+                            Add User
+                        </span>
+                    </a>
+
+                </li>
+        {% endif %}
+        {# <li class="has-subnav">
+            <a href="#">
+               <i class="fa fa-camera-retro fa-2x"></i>
+                <span class="nav-text">
+                    Survey Photos
+                </span>
+            </a>
+           
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-film fa-2x"></i>
+                <span class="nav-text">
+                    Surveying Tutorials
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-book fa-2x"></i>
+                <span class="nav-text">
+                   Surveying Jobs
+                </span>
+            </a>
+        </li>
+        <li>
+           <a href="#">
+               <i class="fa fa-cogs fa-2x"></i>
+                <span class="nav-text">
+                    Tools & Resources
+                </span>
+            </a>
+        </li>
+        <li>
+           <a href="#">
+                <i class="fa fa-map-marker fa-2x"></i>
+                <span class="nav-text">
+                    Member Map
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+               <i class="fa fa-info fa-2x"></i>
+                <span class="nav-text">
+                    Documentation
+                </span>
+            </a>
+        </li>#}
+    </ul> 
+
+    <ul class="logout">
+        <li>
+           <a href="{{ path('app_logout') }}">
+                 <i class="fa fa-power-off fa-2x"></i>
+                <span class="nav-text">
+                    Logout
+                </span>
+            </a>
+        </li>  
+    </ul>
+</nav>

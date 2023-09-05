@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+
+{% block body %}
+{% include "./navbar/sidebar.html.twig" %}
+    
+<div class="project-table" >
+    <h1>Project index</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="color: white;">Id</th>
+                <th style="color: white;">Name</th>
+                <th style="color: white;">Description</th>
+                <th style="color: white;">Created_ad</th>
+                <th style="color: white;">Updated_ad</th>
+                <th style="color: white;">Bearbeiter</th>
+                <th style="color: white;">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for project in projects %}
+            <tr>
+                <td style="color: white;">{{ project.id }}</td>
+                <td style="color: white;">{{ project.name }}</td>
+                <td style="color: white;">{{ project.description }}</td>
+                <td style="color: white;">{{ project.createdAd ? project.createdAd|date('Y-m-d H:i:s') : '' }}</td>
+                <td style="color: white;">{{ project.updatedAd ? project.updatedAd|date('Y-m-d H:i:s') : '' }}</td>
+                <td style="color: white;">{{ project.bearbeiter }}</td>
+                <td>
+                    <form method="post" action="{{ path('app_project_delete', {'id': project.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                        <a
+                            class="btn btn-outline-info"
+                            href="{{ path('app_project_show', {'id': project.id}) }}">
+                            Show
+                        </a>
+                        <a
+                            class="btn btn-outline-success"
+                            href="{{ path('app_project_edit', {'id': project.id}) }}">
+                            Edit
+                        </a>
+
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ project.id) }}">
+                        <button class="btn btn-outline-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="card-header">
+        <a class="btn btn-outline-primary" href="{{ path('app_project_new') }}"> 
+            Create New Project 
+        </a>
+    </div>
+</div>
+{% endblock %}

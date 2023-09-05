@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ny Tech dashboard{% endblock %}
+
+{% block body %}
+    
+{% include "./navbar/sidebar.html.twig" %}
+  
+   
+     
+ 
+   
+    
+ 
+    <div class="dashboard-header">
+        <h2 class="dash-headertext">Willkommen <br>{{app.user.email}} </h2>
+        
+    </div>
+    <div class="dashboard-container">
+     <div class="dash-box dash-color dash-projecte"><a class="link-to" href="/project/">Projecte </a> <br><p class="projecs">already exists: {{maxId}}</p></div> 
+      <div class="dash-box dash-color dash-s"><a class="link-to" href="/register">Benutzer anlegen </a></div>
+     
+    </div>
+ 
+
+
+{% endblock %}

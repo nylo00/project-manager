@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log In{% endblock %}
+
+{% block body %}
+<form method="post" class="login-container">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+        <img class="ny-tech-logo" src="{{ asset('build/images/logo/nyTech-weiß.png')}}" alt="Ny Tech">
+    <div class="center-container">
+        <h1 style="color: white;" class="re-tittle">Login</h1>
+        <div class="center-input">
+                <label style="color: white;" class="inputEmail" for="inputEmail">Email</label>
+                <input style="color: white;" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                <label style="color: white;" class="inputPassword" for="inputPassword">Password</label>
+                <input style="color: white;" type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+        </div>
+
+        {#
+            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+            See https://symfony.com/doc/current/security/remember_me.html
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me"> Remember me
+                </label>
+            </div>
+        #}
+        <div class="center-btn">
+            <button class="button-92" type="submit">
+                Sign in
+            </button>
+            {# <button class="button-92"><a style="color: white;text-decoration: none;font-weight: 400;font-size: 2rem;text-shadow: calc(var(--_i,-1)* 0.08em) -0.01em 0 var(--c), calc(var(--_i,-1)*-0.08em) 0.01em 2px #0004;outline-offset: 0.1em;" href="/register"></router-link>sign up</a></button> #}
+        </div>
+    </div>
+</form>
+
+{% endblock %}
